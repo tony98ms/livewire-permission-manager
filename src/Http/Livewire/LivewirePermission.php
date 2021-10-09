@@ -28,9 +28,11 @@ class LivewirePermission extends Component
     public    $editMode          = false;
     protected $columnName        = '';
     protected $excludeRoles;
+    public $theme;
     public $modalDesign;
     public function __construct()
     {
+        $this->theme = config('livewire-permission.theme', 'bootstrap');
         $this->paginationTheme = config('livewire-permission.theme', 'bootstrap');
         $this->columnName =  config('livewire-permission.column_name.description');
         $this->excludeRoles =  config('livewire-permission.roles.excludes');

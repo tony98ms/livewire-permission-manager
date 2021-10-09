@@ -1,5 +1,5 @@
 <div>
-    @include('permissions::livewire.permissions.'.$paginationTheme.'.modals.'.$modalDesign)
+    @include('permissions::livewire.permissions.'.$theme.'.modals.'.$modalDesign)
     <div class="card">
         <div class="card-body">
             <div class="row mb-4 justify-content-between">
