@@ -2,6 +2,18 @@
 
 return [
     /*
+     |-------------------------------------------------------------------------
+     |Theme Front End
+     |-------------------------------------------------------------------------
+     |
+     |Here you define which type of thema to use to implement the styles,
+     |you must define a mandatory one, however you can customize those styles
+     |by publishing the respective views.
+     |Supported Theme: "bootstrap",
+     */
+    'theme' => "bootstrap",
+
+    /*
     |--------------------------------------------------------------------------
     | Blade Options
     |--------------------------------------------------------------------------
@@ -17,18 +29,6 @@ return [
     ],
 
     /*
-     |-------------------------------------------------------------------------
-     |Theme Front End
-     |-------------------------------------------------------------------------
-     |
-     |Here you define which type of thema to use to implement the styles,
-     |you must define a mandatory one, however you can customize those styles
-     |by publishing the respective views.
-     |Supported Theme: "bootstrap", "tailwind",
-     */
-    'theme' => "bootstrap",
-
-    /*
     |--------------------------------------------------------------------------
     | Route Options
     |--------------------------------------------------------------------------
@@ -41,7 +41,8 @@ return [
     'route' => [
 
         'middleware' => [
-            'web'
+            'web',
+            'auth'
         ],
         'prefix' => "admin",
         'name' => "permission.index",
@@ -56,13 +57,13 @@ return [
     |Here you define the style or theme of the modal to be used to manage
     |roles and permissions.
     |
-    | Supported Theme: "list", "box",
+    | Supported Theme: "list",
     |
     */
 
     'modals' => [
 
-        'role' => "permissions::modals.list"
+        'role' => "list"
     ],
 
     /*
@@ -87,7 +88,7 @@ return [
     |
     |Here you define the name of the new column that will be created in the roles
     |and permissions table defined, with this you can add a description to each
-    |role or permission created, by default the name of the column is description.
+    |role or permission created, by default the name.
     |
     */
     'column_name' => [
@@ -95,6 +96,15 @@ return [
         'description' => null,
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    |Excludes Roles
+    |--------------------------------------------------------------------------
+    |
+    |Here you define the roles you want to exclude from Livewire queries
+    |for display and modification.
+    |
+    */
     'roles' => [
         'excludes' => []
     ]

@@ -1,5 +1,5 @@
 <div>
-    @include('permissions::includes.list')
+    @include('permissions::livewire.permissions.'.$paginationTheme.'.modals.'.$modalDesign)
     <div class="card">
         <div class="card-body">
             <div class="row mb-4 justify-content-between">
@@ -55,7 +55,7 @@
                                     @endisset
                                     <td class="p-1  text-dark">
                                         @foreach ($role->permissions as $singlePermission)
-                                            <span class="text-capitalize badge badge-secondary mb-1">
+                                            <span class="text-capitalize badge badge-info mb-1">
                                                 @isset($singlePermission[config('livewire-permission.column_name.description')])
                                                     {{ $singlePermission[config('livewire-permission.column_name.description')] }}
                                                 @else
