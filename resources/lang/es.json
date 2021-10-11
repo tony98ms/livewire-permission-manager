@@ -16,5 +16,10 @@
     "to": "a",
     "of": "de",
     "Search Role": "Buscar Rol",
-    "Per Page": "Por Pagina"
+    "Per Page": "Por Pagina",
+    "Create Role": "Crear Rol",
+    "Update Role": "Actualizar Rol",
+    "Selected role" : "Rol seleccionado",
+    "Role name" : "Nombre del rol"
+
 }

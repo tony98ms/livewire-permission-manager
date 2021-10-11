@@ -11,6 +11,7 @@ Package that provides a graphical interface to manage roles and permissions.
 -   [Laravel 7|8](https://laravel.com/)
 -   [Livewire](https://laravel-livewire.com/)
 -   [Laravel  Permission](https://github.com/spatie/laravel-permission)
+-   [Bootstra 4.5 | 4.6](https://getbootstrap.com/)
 
 ## INSTALLATION VIA COMPOSER
 

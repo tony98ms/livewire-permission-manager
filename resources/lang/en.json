@@ -16,5 +16,9 @@
     "to": "to",
     "of": "of",
     "Per Page": "Per Page",
-    "Search Role": "Search Role"
+    "Search Role": "Search Role",
+    "Create Role": "Create Role",
+    "Update Role": "Update Role",
+    "Selected role" : "Selected role",
+    "Role name" : "Role name"
 }

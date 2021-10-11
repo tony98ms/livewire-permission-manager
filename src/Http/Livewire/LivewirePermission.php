@@ -16,6 +16,7 @@ class LivewirePermission extends Component
         'search' => ['except' => ''],
         'page',
     ];
+    protected $listeners = ['roleAdd', 'roleUpdated' => 'render'];
     public    $perPage           = 10;
     public    $search            = '';
     public    $orderBy           = 'id';
@@ -30,6 +31,7 @@ class LivewirePermission extends Component
     protected $excludeRoles;
     public $theme;
     public $modalDesign;
+    public $roleName = '';
     public function __construct()
     {
         $this->theme = config('livewire-permission.theme', 'bootstrap');
@@ -67,7 +69,6 @@ class LivewirePermission extends Component
             return ['name'];
         }
     }
-
     /**
      * Get the value of permissionsByRole
      */
@@ -78,5 +79,10 @@ class LivewirePermission extends Component
     public function resetModal()
     {
         $this->reset(['role', 'permissionsByRole']);
+    }
+    public function roleAdd($role)
+    {
+        $this->role = $role;
+        $this->render();
     }
 }
