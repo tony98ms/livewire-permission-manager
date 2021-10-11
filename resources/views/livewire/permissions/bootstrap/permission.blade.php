@@ -31,17 +31,17 @@
                                     @include('permissions::includes._sort-icon', ['field' => 'name'])
                                 </a>
                             </th>
-                            @isset($this->columnName)
+                            @isset($columnName)
                                 <th width="250" class="px-4 py-2 text-center ">
-                                    <a class="text-primary" wire:click.prevent="sortBy('description')" role="button"
-                                        href="#">
+                                    <a class="text-primary" wire:click.prevent="sortBy('{{ $columnName }}')"
+                                        role="button" href="#">
                                         @lang('Description')
-                                        @include('permissions::includes._sort-icon', ['field' => 'description'])
+                                        @include('permissions::includes._sort-icon', ['field' => $columnName])
                                     </a>
                                 </th>
                             @endisset
                             <th class="px-4 py-2 text-center "> @lang('Permissions')</th>
-                            <th class="px-4 py-2 text-center"></th>
+                            <th class="px-4 py-2 text-center" colspan="2"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,10 +83,11 @@
                         @else
                             <tr>
                                 <td colspan="10">
-                                    <p class="text-center">No hay resultado para la busqueda
-                                        <strong>{{ $search }}</strong> en la pagina
-                                        <strong>{{ $page }}</strong> al mostrar <strong>{{ $perPage }}
-                                        </strong> por pagina
+                                    <p class="text-center">@lang('No result for your search')
+                                        <strong>{{ $search }}</strong> @lang('on page')
+                                        <strong>{{ $page }}</strong> @lang('displaying')
+                                        <strong>{{ $perPage }}
+                                        </strong> @lang('per page')
                                     </p>
                                 </td>
                             </tr>

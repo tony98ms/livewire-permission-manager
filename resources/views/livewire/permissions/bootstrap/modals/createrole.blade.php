@@ -26,7 +26,7 @@
                         @enderror
                     </div>
                     @isset($columnName)
-                        <div class="form-group col">
+                        <div class="form-group col-12">
                             <label for="">@lang('Description name')</label>
                             <input type="text" class="form-control" wire:model.refer="roleDescription"
                                 placeholder="@lang('Description name')">

@@ -9,7 +9,7 @@ use Spatie\Permission\Models\Permission;
 
 class LivewireRole extends Component
 {
-    protected $columnName = '';
+    public $columnName = '';
     public    $theme;
     public    $modalDesign;
     public    $roleName   = '';
@@ -38,7 +38,7 @@ class LivewireRole extends Component
     }
     public function resetModal()
     {
-        $this->reset(['roleName', 'roleDescription']);
+        $this->reset(['roleName', 'roleDescription', 'editMode']);
     }
 
     public function createRole()
@@ -63,6 +63,7 @@ class LivewireRole extends Component
     public function editRole(Role $role)
     {
         $this->roleName = $role->name;
+        $this->roleDescription = isset($this->columnName) ? $role[$this->columnName] : '';
         $this->role_id = $role->id;
         $this->editMode = true;
     }

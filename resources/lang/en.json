@@ -16,9 +16,14 @@
     "to": "to",
     "of": "of",
     "Per Page": "Per Page",
+    "per page": "per page",
     "Search Role": "Search Role",
     "Create Role": "Create Role",
     "Update Role": "Update Role",
     "Selected role" : "Selected role",
-    "Role name" : "Role name"
+    "Role name" : "Role name",
+    "No result for your search" : "No result for your search",
+    "on page" : "on page",
+    "displaying" : "displaying"
+
 }

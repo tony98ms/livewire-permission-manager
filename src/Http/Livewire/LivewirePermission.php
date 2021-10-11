@@ -27,7 +27,7 @@ class LivewirePermission extends Component
     public    $freePermissions   = [];
     public    $allRoles          = [];
     public    $editMode          = false;
-    protected $columnName        = '';
+    public $columnName        = '';
     protected $excludeRoles;
     public $theme;
     public $modalDesign;
