@@ -38,7 +38,7 @@ class LivewireRole extends Component
     }
     public function resetModal()
     {
-        $this->reset(['roleName', 'roleDescription', 'editMode']);
+        $this->reset(['roleName', 'roleDescription', 'editMode', 'role_id']);
     }
 
     public function createRole()

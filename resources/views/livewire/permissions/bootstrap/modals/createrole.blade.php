@@ -42,7 +42,7 @@
                             wire:click.prevent="updateRole()">@lang('Update Role')</button>
                     @else
                         <button class="btn btn-warning" wire:target="editRole,updateRole" wire:loading.attr="disabled"
-                            wire:click.prevent="updateRole()">@lang('Create Role')</button>
+                            wire:click.prevent="createRole()">@lang('Create Role')</button>
                     @endif
 
                 </div>
