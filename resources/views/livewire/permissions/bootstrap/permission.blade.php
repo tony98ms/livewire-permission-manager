@@ -68,14 +68,14 @@
                                         <a class="btn btn-sm btn-warning text-dark" data-toggle="modal"
                                             data-target="#modelRole"
                                             wire:click.prevent="$emit('editRole', {{ $role->id }})">
-                                            <i class="fa fa-edit"></i>
+                                            @lang('Edit')
                                         </a>
                                     </td>
                                     <td class="p-1 text-center" width="25">
                                         <a class="btn btn-sm btn-primary" data-toggle="modal"
                                             data-target="#modalPermission"
                                             wire:click.prevent="editPermission('{{ $role->name }}')">
-                                            <i class="fa fa-shield-alt"></i>
+                                            @lang('Permissions')
                                         </a>
                                     </td>
                                 </tr>

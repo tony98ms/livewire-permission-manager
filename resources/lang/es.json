@@ -25,7 +25,12 @@
     "Descrption role" : "Descripcion del rol",
     "No result for your search" : "No hay resultado para la busqueda",
     "on page" : "en la pagina",
-    "displaying" : "al mostrar"
+    "displaying" : "al mostrar",
+    "Showing" : "Mostrando",
+    "results" : "resultados",
+    "Edit" : "Editar"
+
+
 
 
 }

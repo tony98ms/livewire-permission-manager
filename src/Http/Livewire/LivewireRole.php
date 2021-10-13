@@ -16,6 +16,7 @@ class LivewireRole extends Component
     public    $roleDescription      = '';
     public    $role_id      = '';
     public    $editMode      = false;
+    public    $isOpen      = false;
 
     protected $rules = [
         'roleName' => 'required'
@@ -38,7 +39,8 @@ class LivewireRole extends Component
     }
     public function resetModal()
     {
-        $this->reset(['roleName', 'roleDescription', 'editMode', 'role_id']);
+        $this->resetValidation();
+        $this->reset(['roleName', 'roleDescription', 'editMode', 'role_id', 'isOpen']);
     }
 
     public function createRole()
@@ -66,6 +68,7 @@ class LivewireRole extends Component
         $this->roleDescription = isset($this->columnName) ? $role[$this->columnName] : '';
         $this->role_id = $role->id;
         $this->editMode = true;
+        $this->isOpen = true;
     }
     public function updateRole()
     {
