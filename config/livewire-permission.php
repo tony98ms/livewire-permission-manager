@@ -14,15 +14,13 @@ return [
     'theme' => "tailwind",
 
     "blade-template" => [
-        "type" => "components", //Supported Rype: components, directives
+        "type" => "components", //Supported Type: components, directives
 
         "component" => "AppLayout", //type: components
 
         'directives' => [  //type: directives
-
             'extends' => "layouts.app",
-            'section' => "content",
-
+            'section-content' => "content",
         ],
     ],
 

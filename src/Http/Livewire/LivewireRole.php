@@ -9,15 +9,14 @@ use Spatie\Permission\Models\Permission;
 
 class LivewireRole extends Component
 {
-    public $columnName = '';
+    public    $columnName      = '';
     public    $theme;
     public    $modalDesign;
-    public    $roleName   = '';
-    public    $roleDescription      = '';
-    public    $role_id      = '';
-    public    $editMode      = false;
-    public    $isOpen      = false;
-
+    public    $roleName        = '';
+    public    $roleDescription = '';
+    public    $role_id         = '';
+    public    $editMode        = false;
+    public    $isOpen          = false;
     protected $rules = [
         'roleName' => 'required'
     ];

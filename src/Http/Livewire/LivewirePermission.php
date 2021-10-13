@@ -17,6 +17,7 @@ class LivewirePermission extends Component
         'page',
     ];
     protected $listeners = ['roleAdd', 'roleUpdated' => 'render'];
+    protected $excludeRoles;
     public    $perPage           = 10;
     public    $search            = '';
     public    $orderBy           = 'id';
@@ -27,12 +28,11 @@ class LivewirePermission extends Component
     public    $freePermissions   = [];
     public    $allRoles          = [];
     public    $editMode          = false;
-    public $columnName        = '';
-    protected $excludeRoles;
-    public $theme;
-    public $modalDesign;
-    public    $isOpen      = false;
-    public $roleName = '';
+    public    $columnName        = '';
+    public    $theme;
+    public    $modalDesign;
+    public    $isOpen            = false;
+    public    $roleName          = '';
     public function __construct()
     {
         $this->theme = config('livewire-permission.theme', 'bootstrap');
@@ -85,6 +85,7 @@ class LivewirePermission extends Component
     public function roleAdd($role)
     {
         $this->role = $role;
+        $this->isOpen = true;
         $this->render();
     }
 }

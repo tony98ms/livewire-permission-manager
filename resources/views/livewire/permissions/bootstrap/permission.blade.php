@@ -49,9 +49,9 @@
                             @foreach ($roles as $role)
                                 <tr>
                                     <td width="100" class="p-1 text-center  text-dark">{{ $role->id }}</td>
-                                    <td class="p-1 text-center  text-dark">{{ $role->name }}</td>
+                                    <td class="p-1 text-center text-dark">{{ $role->name }}</td>
                                     @isset($this->columnName)
-                                        <td class="p-1 text-center  text-dark">{{ $role->description }}</td>
+                                        <td class="p-1 text-center text-dark">{{ $role->description }}</td>
                                     @endisset
                                     <td class="p-1  text-dark">
                                         @foreach ($role->permissions as $singlePermission)
@@ -65,17 +65,32 @@
                                         @endforeach
                                     </td>
                                     <td class="p-1 text-center" width="25">
-                                        <a class="btn btn-sm btn-warning text-dark" data-toggle="modal"
-                                            data-target="#modelRole"
+                                        <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modelRole"
                                             wire:click.prevent="$emit('editRole', {{ $role->id }})">
-                                            @lang('Edit')
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="text-sm" width="24"
+                                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-edit">
+                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                </path>
+                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                </path>
+                                            </svg>@lang('Edit')
                                         </a>
                                     </td>
                                     <td class="p-1 text-center" width="25">
                                         <a class="btn btn-sm btn-primary" data-toggle="modal"
                                             data-target="#modalPermission"
                                             wire:click.prevent="editPermission('{{ $role->name }}')">
-                                            @lang('Permissions')
+                                            <div class="flex items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-shield">
+                                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                                </svg>
+                                                @lang('Permissions')
+                                            </div>
                                         </a>
                                     </td>
                                 </tr>

@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Tonystore\LivewirePermission\Http\Livewire\LivewirePermission;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Blade;
 use Tonystore\LivewirePermission\Http\Livewire\LivewireRole;
 
 class LivewirePermissionProvider extends ServiceProvider
@@ -29,6 +30,7 @@ class LivewirePermissionProvider extends ServiceProvider
     {
         Livewire::component('permission', LivewirePermission::class);
         Livewire::component('role', LivewireRole::class);
+        Blade::component('permissions::components.includes.scripts', 'permissions::scripts');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'permissions');
         $this->loadRoutesFrom(__DIR__ . '/../routes/permission.php');
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'permissions');
