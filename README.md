@@ -35,7 +35,7 @@ php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePerm
 #### Publish Migrations
 Publishes migrations, only if a new column is created for the detail of a role or permission.
 ``` bash
-php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=migration
+php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=migrations
 ``` 
 
 #### Publish Lang
