@@ -4,8 +4,6 @@ namespace Tonystore\LivewirePermission\Http\Livewire;
 
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-
 
 class LivewireRole extends Component
 {
@@ -21,7 +19,7 @@ class LivewireRole extends Component
         'roleName' => 'required'
     ];
     protected $messages = [
-        'roleName.required' => 'The role name is required.'
+        'roleName.required' => 'The role name is required'
     ];
     protected $listeners = ['editRole'];
 

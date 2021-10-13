@@ -1,8 +1,16 @@
 
 ## **Changelog**
 *All notable changes to livewire-permission will be documented in this file.*
+### 0.1.7 - 2021-10-13
+- Tailwind support.
+- Separation between blade directives and livewire components.
+- Custom name for the permissions management path.
+- Restructuring in LivewirePermission and LivewireRole component.
+- New translations.
+### 0.1.6 - 2021-10-11
+- Component bugs fixed
 ### 0.1.5 - 2021-10-11
-- Fixes in views and components.
+- Component bugs fixed
 ### 0.1.4 - 2021-10-11
 - A new component has been added to create a role.
 - You will be able to view the permissions automatically after creating the role.

@@ -26,7 +26,7 @@
                                 class="appearance-none rounded border border-gray-200 border-b block w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                                 id="exampleFormControlInput1" placeholder="@lang('Role name')"
                                 wire:model.refer="roleName">
-                            @error('roleName') <span class="text-red-500">{{ $message }}</span>@enderror
+                            @error('roleName') <span class="text-red-500">@lang($message)</span>@enderror
                         </div>
 
                     </div>

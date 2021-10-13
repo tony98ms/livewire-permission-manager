@@ -7,11 +7,11 @@
 Package that provides a graphical interface to manage roles and permissions.
 ## REQUIREMENTS
 
--   [PHP >= 7.2](http://php.net/)
--   [Laravel 7|8](https://laravel.com/)
--   [Livewire](https://laravel-livewire.com/)
+-   [PHP >= 7.2](http://php.net)
+-   [Laravel 7|8](https://laravel.com)
+-   [Livewire](https://laravel-livewire.com)
 -   [Laravel  Permission](https://github.com/spatie/laravel-permission)
--   [Bootstra 4.5 | 4.6](https://getbootstrap.com/)
+- [Bootstrap 4.5 | 4.6](https://getbootstrap.com) or [Tailwind](https://tailwindcss.com) 
 
 ## INSTALLATION VIA COMPOSER
 
@@ -38,50 +38,54 @@ Publishes migrations, only if a new column is created for the detail of a role o
 php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=migration
 ``` 
 
-#### Publish Langs
+#### Publish Lang
 Publish the translations in case you wish to modify any of them.
 ``` bash
 php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=langs
 ``` 
 ## Usage
-By default, Bootstrap is used to create the administration interface for roles and permissions, with support for Tailwind coming soon.
+By default, Tailwind is used to create the role and permissions management interface, but you can also choose the Bootstrap theme.
 
 ```php
 <?php
 return [
 	/*
-	 * Supported Theme: "bootstrap",
+	 * Supported Theme: 'tailwind, bootstrap',
 	 */
-	'theme'  =>  "bootstrap",
+	'theme'  =>  'tailwind',
 ];
 ```
 
-### Configure blade directives
+### Configure templates
+You have 2 alternatives to use with this package, using the blade directives or using the laravel components.
 ```php
 <?php
 return [
-	'blade'  => [
-		'extends'  =>  "layouts.app", //By Defaut.
-		'section'  =>  "content", //By Defaut.
-	],
-];
-```
-### Route
-Set your own prefix and midlewares and name for the role management path and permissions. By default you will have the following:
-
-```php
-<?php
-return [
-	'route'  => [
-		'middleware'  => [
-			'web',
-			'auth'
+	'blade-template'  => [
+		'type'  =>  'components', //Supported Type: 'components, directives'
+		'component'  =>  'AppLayout', //type: components
+		'directives'  => [ //type: directives
+			'extends'  =>  'layouts.app',
+			'section-content'  =>  'content',
 		],
-	'prefix'  =>  "admin",
-	'name'  =>  "permission.index",
 	],
 ];
 ```
+**If you use the Bootstrap template, then you must load the component containing the scripts to handle the modals, in your main layout.**
+```html
+ <body> 
+    ...
+    @livewireScripts
+    
+    //INSERT COMPONENT
+   
+       <x-permissions::scripts />
+  
+ </body>
+
+```
+**Note that you must import it after the Livewire scripts.**
+
 
 ### Select a Modal design
 You will be able to select among the types of manners that the package will have, at the moment only a list type model is available, which is configured here:
@@ -90,7 +94,7 @@ You will be able to select among the types of manners that the package will have
 <?php
 return [
 	'modals'  => [
-		'role'  =>  "list"
+		'role'  =>  'list'
 	],
 ];
 ```
@@ -126,4 +130,25 @@ return [
 		'description'  =>  null,
 	],
 ];
+```
+### Route
+Set your own prefix and midlewares and name for the role management path and permissions. By default you will have the following:
+
+```php
+<?php
+return [
+	'route'  => [
+		'middleware'  => [
+			'web',
+			'auth'
+		],
+		'prefix'  =>  'admin',
+		'name'  =>  'permission.index',
+		'url'  =>  '/roles/manager'
+	],
+];
+```
+Now, once everything is configured, you will be able to access the path to manage your roles.
+```css
+http://localhost/admin/roles/manager
 ```

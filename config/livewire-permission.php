@@ -9,35 +9,30 @@ return [
      |Here you define which type of thema to use to implement the styles,
      |you must define a mandatory one, however you can customize those styles
      |by publishing the respective views.
-     |Supported Theme: "bootstrap",
+     |Supported Theme: 'bootstrap, tailwind',
      */
-    'theme' => "tailwind",
-
-    "blade-template" => [
-        "type" => "components", //Supported Type: components, directives
-
-        "component" => "AppLayout", //type: components
-
-        'directives' => [  //type: directives
-            'extends' => "layouts.app",
-            'section-content' => "content",
-        ],
-    ],
+    'theme' => 'tailwind',
 
     /*
     |--------------------------------------------------------------------------
     | Blade Options
     |--------------------------------------------------------------------------
     |
-    |Here you define the prefix that your extends and section helper blade
-    |will have in order to use this package.
+    |You have 2 alternatives to use with this package, using the blade
+    |directives or using the laravel components.
     |
     */
+    'blade-template' => [
+        'type' => 'components', //Supported Type: components, directives
 
-    'blade' => [
-        'extends' => "layouts.app",
-        'section' => "content",
+        'component' => 'AppLayout', //type: components
+
+        'directives' => [  //type: directives
+            'extends' => 'layouts.app',
+            'section-content' => 'content',
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -55,8 +50,9 @@ return [
             'web',
             'auth'
         ],
-        'prefix' => "admin",
-        'name' => "permission.index",
+        'prefix' => 'admin',
+        'name' => 'permission.index',
+        'url' => '/roles/manager'
 
     ],
 
@@ -68,13 +64,14 @@ return [
     |Here you define the style or theme of the modal to be used to manage
     |roles and permissions.
     |
-    | Supported Theme: "list",
+    | Supported Theme: 'list',
     |
     */
 
     'modals' => [
 
-        'role' => "list"
+        'role' => 'list'
+
     ],
 
     /*
