@@ -16,15 +16,15 @@ class UpdatePermissionTables extends Migration
 
         $tableNames = config('livewire-permission.tables');
         $columnName = config('livewire-permission.column_name');
-        if (empty($tableNames) || empty($columnName['description'])) {
+        if (empty($tableNames) || ($columnName['add_column'] && empty($columnName['description']))) {
             throw new \Exception('Error: config/permission.php not loaded or column_name undefined.');
         }
-        if (!Schema::hasColumn($tableNames['permissions'], $columnName['description'])) {
+        if (!Schema::hasColumn($tableNames['permissions'], $columnName['description']) && $columnName['add_column']) {
             Schema::table($tableNames['permissions'], function (Blueprint $table) use ($columnName) {
                 $table->string($columnName['description'])->nullable();
             });
         }
-        if (!Schema::hasColumn($tableNames['roles'], $columnName['description'])) {
+        if (!Schema::hasColumn($tableNames['roles'], $columnName['description']) && $columnName['add_column']) {
             Schema::table($tableNames['roles'], function (Blueprint $table) use ($columnName) {
                 $table->string($columnName['description'])->nullable();
             });
@@ -39,22 +39,18 @@ class UpdatePermissionTables extends Migration
     {
         $tableNames = config('livewire-permission.tables');
         $columnName = config('livewire-permission.column_name');
-        if (empty($tableNames) || empty($columnName['description'])) {
+        if (empty($tableNames) || ($columnName['add_column'] && empty($columnName['description']))) {
             throw new \Exception('Error: config/permission.php not loaded or column_name undefined.');
         }
-        if (Schema::hasColumn($tableNames['permissions'], $columnName['description'])) {
+        if (Schema::hasColumn($tableNames['permissions'], $columnName['description'] ) ) {
             Schema::table($tableNames['permissions'], function (Blueprint $table) use ($columnName) {
                 $table->dropColumn($columnName['description']);
             });
-        } else {
-            throw new \Exception('Error: There is no column with that name in the table.');
         }
         if (Schema::hasColumn($tableNames['roles'], $columnName['description'])) {
             Schema::table($tableNames['roles'], function (Blueprint $table) use ($columnName) {
                 $table->dropColumn($columnName['description']);
             });
-        } else {
-            throw new \Exception('Error: There is no column with that name in the table.');
         }
     }
 }
