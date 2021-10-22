@@ -1,5 +1,5 @@
 {
-    "name": "tonystore/livewire-permission",
+    "name": "tonystore/livewire-permission-manager",
     "description": "Package that provides a graphical interface to manage roles and permissions.",
     "type": "package",
     "homepage": "https://github.com/tony98ms/livewire-permission",
@@ -13,9 +13,9 @@
     ],
     "require": {
         "livewire/livewire": "2.*",
-        "spatie/laravel-permission": "^4.0 || ^5.1",
+        "spatie/laravel-permission": "^3.0 || ^4.0 || ^5.1",
         "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0",
-        "php": "^7.2.5|^8.0",
+        "php": "^7.0|^8.0",
         "illuminate/database": "^6.0|^7.0|^8.0"
     },
     "require-dev": {

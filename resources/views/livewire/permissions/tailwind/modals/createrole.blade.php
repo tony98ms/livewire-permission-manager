@@ -20,15 +20,24 @@
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="">
                         <div class="mb-4">
-                            <label for="exampleFormControlInput1"
-                                class="block text-gray-700 text-sm font-bold mb-2">@lang('Role name')</label>
+                            <label for="inputName" class="block text-gray-700 text-sm font-bold mb-2">@lang('Role
+                                name')</label>
                             <input type="text"
                                 class="appearance-none rounded border border-gray-200 border-b block w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
-                                id="exampleFormControlInput1" placeholder="@lang('Role name')"
-                                wire:model.refer="roleName">
+                                id="inputName" placeholder="@lang('Role name')" wire:model.refer="roleName">
                             @error('roleName') <span class="text-red-500">@lang($message)</span>@enderror
                         </div>
-
+                        @isset($columnName)
+                            <div class="mb-4">
+                                <label for="inputDescription"
+                                    class="block text-gray-700 text-sm font-bold mb-2">@lang('Description name')</label>
+                                <input type="text"
+                                    class="appearance-none rounded border border-gray-200 border-b block w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+                                    id="inputDescription" placeholder="@lang('Description name')"
+                                    wire:model.refer="roleDescription">
+                                @error('roleDescription') <span class="text-red-500">@lang($message)</span>@enderror
+                            </div>
+                        @endisset
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
@@ -49,7 +58,6 @@
                     </span>
             </form>
         </div>
-
     </div>
 </div>
 </div>
