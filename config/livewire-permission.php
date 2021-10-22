@@ -100,7 +100,7 @@ return [
     |
     */
     'column_name' => [
-        'add_column' => true,
+        'add_column' => false,
         'description' => null,
     ],
 

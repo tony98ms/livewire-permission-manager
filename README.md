@@ -127,7 +127,7 @@ Here you define the name of the new column that will be created in the roles and
 <?php
 return [
 	'column_name'  => [
-		'add_column' => true,
+		'add_column' => false,
 		'description'  =>  null,
 	],
 ];

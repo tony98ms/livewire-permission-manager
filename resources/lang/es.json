@@ -29,10 +29,6 @@
     "Showing" : "Mostrando",
     "results" : "resultados",
     "Edit" : "Editar",
-    "The role name is required" : "El nombre del rol es requerido"
-
-
-
-
-
+    "The role name is required" : "El nombre del rol es requerido",
+    "Description name" : "Nombre de descripción"
 }
