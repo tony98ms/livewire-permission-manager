@@ -1,6 +1,10 @@
 
 ## **Changelog**
 *All notable changes to livewire-permission will be documented in this file.*
+### 0.1.8 - 2021-10-21
+- Fix views
+- Change in README.MD
+- Change in composer.json
 ### 0.1.7 - 2021-10-13
 - Tailwind support.
 - Separation between blade directives and livewire components.
