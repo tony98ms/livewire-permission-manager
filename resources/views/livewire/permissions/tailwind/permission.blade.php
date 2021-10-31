@@ -9,9 +9,9 @@
                 <div class="relative mx-1">
                     <select wire:model="perPage"
                         class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-300 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                        <option>10</option>
-                        <option>15</option>
-                        <option>25</option>
+                        @foreach ($perPages as $paginate)
+                            <option>{{ $paginate }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -44,17 +44,17 @@
                                 @include('permissions::includes._sort-icon', ['field' => 'name'])
                             </a>
                         </th>
-                        @isset($columnName)
+                        @if ($columnAdd)
                             <th width="250" class="px-4 py-2 text-center ">
-                                <a class="text-primary" wire:click.prevent="sortBy('{{ $columnName }}')" role="button"
-                                    href="#">
+                                <a class="text-primary" wire:click.prevent="sortBy('{{ $columnName }}')"
+                                    role="button" href="#">
                                     @lang('Description')
                                     @include('permissions::includes._sort-icon', ['field' => $columnName])
                                 </a>
                             </th>
-                        @endisset
+                        @endif
                         <th class="px-4 py-2 text-center "> @lang('Permissions')</th>
-                        <th class="px-4 py-2 text-center" colspan="2"></th>
+                        <th class="px-4 py-2 text-center" colspan="3"></th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-500">
@@ -63,9 +63,9 @@
                             <tr>
                                 <td width="100" class="bg-gray-100 text-center">{{ $role->id }}</td>
                                 <td class="bg-gray-100">{{ $role->name }}</td>
-                                @isset($this->columnName)
+                                @if ($this->columnAdd)
                                     <td class="bg-gray-100">{{ $role->description }}</td>
-                                @endisset
+                                @endif
                                 <td class="bg-gray-100">
                                     @foreach ($role->permissions as $singlePermission)
                                         <span
@@ -109,6 +109,28 @@
                                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                                             </svg>
                                             @lang('Permissions')
+                                        </div>
+
+                                    </button>
+
+                                </td>
+                                <td class="bg-gray-100 p-1" width="25">
+                                    <button
+                                        class="bg-red-500 hover:bg-red-700 transition-all p-2 rounded text-sm text-white font-weight"
+                                        wire:click.prevent="$emit('confirmDelete', '{{ __('Are you sure you want to delete this role?') }}','deleteRole', {{ $role->id }})">
+                                        <div class="flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-trash-2">
+                                                <polyline points="3 6 5 6 21 6"></polyline>
+                                                <path
+                                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                </path>
+                                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                            </svg>
+                                            @lang('Remove')
                                         </div>
 
                                     </button>

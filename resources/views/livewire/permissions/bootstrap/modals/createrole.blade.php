@@ -25,7 +25,7 @@
                             <p class="error-message text-danger font-weight-bold">@lang($message)</p>
                         @enderror
                     </div>
-                    @isset($columnName)
+                    @if ($columnAdd)
                         <div class="form-group col-12">
                             <label for="">@lang('Description name')</label>
                             <input type="text" class="form-control" wire:model.refer="roleDescription"
@@ -34,7 +34,7 @@
                                 <p class="error-message text-danger font-weight-bold">@lang($message)</p>
                             @enderror
                         </div>
-                    @endisset
+                    @endif
                 </div>
                 <div class="row justify-content-center">
                     @if ($editMode)

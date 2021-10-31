@@ -1,6 +1,13 @@
 
 ## **Changelog**
 *All notable changes to livewire-permission will be documented in this file.*
+### 0.1.9 - 2021-10-30
+- Aggregate role elimination.
+- Array of numbers for table paging.
+- New styles for tables and scripts for procedures.
+- Bug fixes
+- Change in README.MD
+- Change in composer.json
 ### 0.1.8 - 2021-10-21
 - Fix views
 - Change in README.MD

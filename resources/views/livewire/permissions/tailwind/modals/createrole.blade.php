@@ -27,7 +27,7 @@
                                 id="inputName" placeholder="@lang('Role name')" wire:model.refer="roleName">
                             @error('roleName') <span class="text-red-500">@lang($message)</span>@enderror
                         </div>
-                        @isset($columnName)
+                        @if ($columnAdd)
                             <div class="mb-4">
                                 <label for="inputDescription"
                                     class="block text-gray-700 text-sm font-bold mb-2">@lang('Description name')</label>
@@ -37,7 +37,7 @@
                                     wire:model.refer="roleDescription">
                                 @error('roleDescription') <span class="text-red-500">@lang($message)</span>@enderror
                             </div>
-                        @endisset
+                        @endif
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">

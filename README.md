@@ -151,6 +151,8 @@ return [
 	],
 ];
 ```
+**If you mark as true the option to add the description column, you must have previously generated that column in the respective database table.**
+
 ### Route
 Set your own prefix and midlewares and name for the role management path and permissions. By default you will have the following:
 

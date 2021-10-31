@@ -29,14 +29,13 @@
                                 @lang('Role')
                                 @include('permissions::includes._sort-icon', ['field' => 'name'])
                             </th>
-                            @isset($columnName)
+                            @if ($columnAdd)
                                 <th width="250" class="px-4 py-2 text-center "
                                     wire:click.prevent="sortBy('{{ $columnName }}')" role="button">
                                     @lang('Description')
                                     @include('permissions::includes._sort-icon', ['field' => $columnName])
-
                                 </th>
-                            @endisset
+                            @endif
                             <th class="px-4 py-2 text-center "> @lang('Permissions')</th>
                             <th class="px-4 py-2 text-center" colspan="3"></th>
                         </tr>
@@ -47,17 +46,17 @@
                                 <tr>
                                     <td width="100" class="p-1 text-center  text-dark">{{ $role->id }}</td>
                                     <td class="p-1 text-center text-dark">{{ $role->name }}</td>
-                                    @isset($this->columnName)
+                                    @if ($this->columnAdd)
                                         <td class="p-1 text-center text-dark">{{ $role->description }}</td>
-                                    @endisset
+                                    @endif
                                     <td class="p-1  text-dark">
                                         @foreach ($role->permissions as $singlePermission)
                                             <span class="text-capitalize badge badge-info mb-1">
-                                                @isset($singlePermission[config('livewire-permission.column_name.description')])
+                                                @if ($singlePermission[config('livewire-permission.column_name.description')])
                                                     {{ $singlePermission[config('livewire-permission.column_name.description')] }}
                                                 @else
                                                     {{ $singlePermission->name }}
-                                                @endisset
+                                                @endif
                                             </span>
                                         @endforeach
                                     </td>

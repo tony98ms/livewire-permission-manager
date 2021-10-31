@@ -30,6 +30,7 @@ class LivewirePermission extends Component
     public    $allRoles          = [];
     public    $editMode          = false;
     public    $columnName        = '';
+    public    $columnAdd;
     public    $theme;
     public    $modalDesign;
     public    $isOpen            = false;
@@ -39,6 +40,7 @@ class LivewirePermission extends Component
         $this->theme = config('livewire-permission.theme', 'bootstrap');
         $this->paginationTheme = config('livewire-permission.theme', 'bootstrap');
         $this->columnName =  config('livewire-permission.column_name.description');
+        $this->columnAdd =  config('livewire-permission.column_name.add_column');
         $this->excludeRoles =  config('livewire-permission.roles.excludes');
         $this->modalDesign =  config('livewire-permission.modals.role');
         $this->perPages =  config('livewire-permission.paginate.perPages');
@@ -59,7 +61,10 @@ class LivewirePermission extends Component
             ->paginate($this->perPage);
         return view('permissions::livewire.permissions.' . $this->theme . '.permission', compact('roles'));
     }
-
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
     public function editPermission($name)
     {
         $this->role = $name;

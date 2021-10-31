@@ -15,6 +15,8 @@ class LivewireRole extends Component
     public    $role_id         = '';
     public    $editMode        = false;
     public    $isOpen          = false;
+    public    $columnAdd;
+
     protected $rules = [
         'roleName' => 'required'
     ];
@@ -29,6 +31,7 @@ class LivewireRole extends Component
         $this->paginationTheme = config('livewire-permission.theme', 'bootstrap');
         $this->columnName =  config('livewire-permission.column_name.description');
         $this->modalDesign =  config('livewire-permission.modals.role');
+        $this->columnAdd =  config('livewire-permission.column_name.add_column');
     }
     public function render()
     {
