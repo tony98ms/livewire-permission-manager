@@ -2,7 +2,7 @@
     "name": "tonystore/livewire-permission-manager",
     "description": "Package that provides a graphical interface to manage roles and permissions.",
     "type": "package",
-    "homepage": "https://github.com/tony98ms/livewire-permission",
+    "homepage": "https://github.com/tony98ms/livewire-permission-manager",
     "keywords": [
         "laravel",
         "livewire",

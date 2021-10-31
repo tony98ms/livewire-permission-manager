@@ -21,7 +21,7 @@ class LivewireRole extends Component
     protected $messages = [
         'roleName.required' => 'The role name is required'
     ];
-    protected $listeners = ['editRole'];
+    protected $listeners = ['editRole', 'deleteRole'];
 
     public function __construct()
     {
@@ -73,5 +73,10 @@ class LivewireRole extends Component
         $role = Role::where('id', $this->role_id)->update($this->getAttributes());
         $this->resetModal();
         $this->emit('roleUpdated');
+    }
+    public function deleteRole(Role $role)
+    {
+        $role->delete();
+        $this->emit('roleDeleted');
     }
 }

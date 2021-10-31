@@ -1,6 +1,6 @@
 # livewire-permission
 
-[![Latest Stable Version](http://poser.pugx.org/tonystore/livewire-permission/v)](https://packagist.org/packages/tonystore/livewire-permission)  [![Total Downloads](http://poser.pugx.org/tonystore/livewire-permission/downloads)](https://packagist.org/packages/tonystore/livewire-permission)  [![License](http://poser.pugx.org/tonystore/livewire-permission/license)](https://packagist.org/packages/tonystore/livewire-permission)  [![PHP Version Require](http://poser.pugx.org/tonystore/livewire-permission/require/php)](https://packagist.org/packages/tonystore/livewire-permission)
+[![Latest Stable Version](http://poser.pugx.org/tonystore/livewire-permission/v)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![Total Downloads](http://poser.pugx.org/tonystore/livewire-permission-manager/downloads)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![License](http://poser.pugx.org/tonystore/livewire-permission-manager/license)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![PHP Version Require](http://poser.pugx.org/tonystore/livewire-permission-manager/require/php)](https://packagist.org/packages/tonystore/livewire-permission)
 
   
 
@@ -19,29 +19,29 @@ Package that provides a graphical interface to manage roles and permissions.
 
 Run this command line in console.
 ``` bash
-composer require tonystore/livewire-permission
+composer require tonystore/livewire-permission-manager
 ```
 ### Step 2: Publish Assets
 #### Publish Config File
 ``` bash
-php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=config
+php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=config-permission
 ``` 
 #### Publish Views
 Publish the views only if any modifications to the interfaces are required.
 ``` bash
-php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=views
+php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=views-permission
 ``` 
 
 #### Publish Migrations
 Publishes migrations, only if a new column is created for the detail of a role or permission.
 ``` bash
-php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=migrations
+php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=migrations-permission
 ``` 
 
 #### Publish Lang
 Publish the translations in case you wish to modify any of them.
 ``` bash
-php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=langs
+php artisan vendor:publish --provider="Tonystore\LivewirePermission\LivewirePermissionProvider" --tag=langs-permission
 ``` 
 ## Usage
 By default, Tailwind is used to create the role and permissions management interface, but you can also choose the Bootstrap theme.
@@ -71,21 +71,26 @@ return [
 	],
 ];
 ```
-**If you use the Bootstrap template, then you must load the component containing the scripts to handle the modals, in your main layout.**
+**Includes the component that contains the scripts and styles needed for the graphic interface.**
 ```html
+<head>
+    ....
+       <x-permissions::styles />
+    ....
+</head>
  <body> 
     ...
     @livewireScripts
     
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     //INSERT COMPONENT
-   
        <x-permissions::scripts />
   
  </body>
 
 ```
+**To remove a role, SweetAlert is used, so you must have it in your design, and it must be before the script component.**
 **Note that you must import it after the Livewire scripts.**
-
 
 ### Select a Modal design
 You will be able to select among the types of manners that the package will have, at the moment only a list type model is available, which is configured here:
@@ -99,8 +104,22 @@ return [
 ];
 ```
 
+### Customized page
+Here you define the array of numbers for the paging options.
+
+```php
+<?php
+   'paginate' => [
+        'perPages' => [
+            10, 25, 50, 100, 200
+        ]
+
+    ]
+```
+
 ###  Change tables name
 Here you assign the names of the tables to be able to run the migration. By default it uses the tables listed in the Laravel Permission package.
+
 ```php
 <?php
 return [

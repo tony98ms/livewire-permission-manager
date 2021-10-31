@@ -31,6 +31,7 @@ class LivewirePermissionProvider extends ServiceProvider
         Livewire::component('permission', LivewirePermission::class);
         Livewire::component('role', LivewireRole::class);
         Blade::component('permissions::components.includes.scripts', 'permissions::scripts');
+        Blade::component('permissions::components.includes.styles', 'permissions::styles');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'permissions');
         $this->loadRoutesFrom(__DIR__ . '/../routes/permission.php');
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'permissions');
@@ -40,16 +41,16 @@ class LivewirePermissionProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../resources/views' => resource_path('views/vendor/permissions')
-            ], 'views');
+            ], 'views-permission');
             $this->publishes([
                 __DIR__ . '/../config/livewire-permission.php' => config_path('livewire-permission.php'),
-            ], 'config');
+            ], 'config-permission');
             $this->publishes([
                 __DIR__ . '/../database/migrations/update_permission_tables.php.stub' => $this->getMigrationFileName('update_permission_tables.php'),
-            ], 'migrations');
+            ], 'migrations-permission');
             $this->publishes([
                 __DIR__ . '/../resources/lang' => resource_path('lang/vendor/permissions'),
-            ], 'langs');
+            ], 'langs-permission');
         }
     }
 

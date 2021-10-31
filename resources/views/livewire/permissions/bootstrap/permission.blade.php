@@ -6,9 +6,9 @@
                 <div class="col-lg-4 form-inline col-sm-12 mb-lg-0 mb-1">
                     @lang('Per Page'): &nbsp;
                     <select wire:model="perPage" class="form-control form-control-sm">
-                        <option>10</option>
-                        <option>15</option>
-                        <option>25</option>
+                        @foreach ($perPages as $paginate)
+                            <option>{{ $paginate }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="col-lg-3 col-sm-12 mb-lg-0 mb-1">
@@ -16,32 +16,29 @@
                 </div>
             </div>
             <div class="row table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped table-sortable table-bordered">
                     <thead>
                         <tr>
-                            <th width="100" class="px-4 py-2 text-center ">
-                                <a class="text-primary" wire:click.prevent="sortBy('id')" role="button" href="#">
-                                    @lang('ID')
-                                    @include('permissions::includes._sort-icon', ['field' => 'id'])
-                                </a>
+                            <th width="100" class="px-4 py-2 text-center" role="button"
+                                wire:click.prevent="sortBy('id')">
+                                @lang('ID')
+                                @include('permissions::includes._sort-icon', ['field' => 'id'])
                             </th>
-                            <th width="150" class="px-4 py-2 text-center ">
-                                <a class="text-primary" wire:click.prevent="sortBy('name')" role="button" href="#">
-                                    @lang('Role')
-                                    @include('permissions::includes._sort-icon', ['field' => 'name'])
-                                </a>
+                            <th width="150" class="px-4 py-2 text-center " wire:click.prevent="sortBy('name')"
+                                role="button">
+                                @lang('Role')
+                                @include('permissions::includes._sort-icon', ['field' => 'name'])
                             </th>
                             @isset($columnName)
-                                <th width="250" class="px-4 py-2 text-center ">
-                                    <a class="text-primary" wire:click.prevent="sortBy('{{ $columnName }}')"
-                                        role="button" href="#">
-                                        @lang('Description')
-                                        @include('permissions::includes._sort-icon', ['field' => $columnName])
-                                    </a>
+                                <th width="250" class="px-4 py-2 text-center "
+                                    wire:click.prevent="sortBy('{{ $columnName }}')" role="button">
+                                    @lang('Description')
+                                    @include('permissions::includes._sort-icon', ['field' => $columnName])
+
                                 </th>
                             @endisset
                             <th class="px-4 py-2 text-center "> @lang('Permissions')</th>
-                            <th class="px-4 py-2 text-center" colspan="2"></th>
+                            <th class="px-4 py-2 text-center" colspan="3"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,6 +87,25 @@
                                                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                                                 </svg>
                                                 @lang('Permissions')
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td class="p-1 text-center" width="25">
+                                        <a class="btn btn-sm btn-danger"
+                                            wire:click.prevent="$emit('confirmDelete', '{{ __('Are you sure you want to delete this role?') }}','deleteRole', {{ $role->id }})">
+                                            <div class="flex items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-trash-2">
+                                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                                    <path
+                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                    </path>
+                                                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                </svg>
+                                                @lang('Remove')
                                             </div>
                                         </a>
                                     </td>

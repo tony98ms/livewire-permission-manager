@@ -16,9 +16,10 @@ class LivewirePermission extends Component
         'search' => ['except' => ''],
         'page',
     ];
-    protected $listeners = ['roleAdd', 'roleUpdated' => 'render'];
+    protected $listeners = ['roleAdd', 'roleUpdated' => 'render', 'roleDeleted' => 'render'];
     protected $excludeRoles;
-    public    $perPage           = 10;
+    public    $perPage;
+    public    $perPages;
     public    $search            = '';
     public    $orderBy           = 'id';
     public    $orderAsc          = true;
@@ -40,6 +41,8 @@ class LivewirePermission extends Component
         $this->columnName =  config('livewire-permission.column_name.description');
         $this->excludeRoles =  config('livewire-permission.roles.excludes');
         $this->modalDesign =  config('livewire-permission.modals.role');
+        $this->perPages =  config('livewire-permission.paginate.perPages');
+        $this->perPage =  $this->perPages[0];
     }
     public function render()
     {
