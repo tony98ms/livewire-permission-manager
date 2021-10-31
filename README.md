@@ -1,6 +1,6 @@
-# livewire-permission
+# livewire-permission-manager
 
-[![Latest Stable Version](http://poser.pugx.org/tonystore/livewire-permission/v)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![Total Downloads](http://poser.pugx.org/tonystore/livewire-permission-manager/downloads)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![License](http://poser.pugx.org/tonystore/livewire-permission-manager/license)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![PHP Version Require](http://poser.pugx.org/tonystore/livewire-permission-manager/require/php)](https://packagist.org/packages/tonystore/livewire-permission)
+[![Latest Stable Version](http://poser.pugx.org/tonystore/livewire-permission-manager/v)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![Total Downloads](http://poser.pugx.org/tonystore/livewire-permission-manager/downloads)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![License](http://poser.pugx.org/tonystore/livewire-permission-manager/license)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![PHP Version Require](http://poser.pugx.org/tonystore/livewire-permission-manager/require/php)](https://packagist.org/packages/tonystore/livewire-permission)
 
   
 
