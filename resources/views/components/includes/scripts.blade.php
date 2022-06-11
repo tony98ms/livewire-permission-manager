@@ -9,8 +9,35 @@
                 $('#modelRole').modal('hide');
             });
         </script>
+    @elseif (config('livewire-permission.theme') == 'bootstrap5')
+        <script>
+            let roleModal = document.getElementById('modelRole');
+            var role = new bootstrap.Modal(roleModal, {
+                keyboard: false,
+                backdrop: 'static'
+            });
+            Livewire.on('showBootstrapModal', () => {
+                role.show();
+            });
+            // Livewire.on('hideModal', () => {
+            //     role.hide();
+            // });
+            let permissionModal = document.getElementById('modalPermission');
+            var permission = new bootstrap.Modal(permissionModal, {
+                keyboard: false,
+                backdrop: 'static'
+            });
+            Livewire.on('showPermissionModal', () => {
+                permission.show();
+            });
+            Livewire.on('hideModal', () => {
+                role.hide();
+                permission.hide();
+            });
+        </script>
     @endif
     <script>
+        console.log('Hola');
         Livewire.on('confirmDelete', function(title, metodo, id) {
             Swal.fire({
                 title: title,

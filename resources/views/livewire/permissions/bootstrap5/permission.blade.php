@@ -61,7 +61,7 @@
                                         @endforeach
                                     </td>
                                     <td class="p-1 text-center" width="25">
-                                        <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modelRole"
+                                        <a class="btn btn-sm btn-warning"
                                             wire:click.prevent="$emit('editRole', {{ $role->id }})">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="text-sm" width="24"
                                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -75,8 +75,7 @@
                                         </a>
                                     </td>
                                     <td class="p-1 text-center" width="25">
-                                        <a class="btn btn-sm btn-primary" data-toggle="modal"
-                                            data-target="#modalPermission"
+                                        <a class="btn btn-sm btn-primary"
                                             wire:click.prevent="editPermission('{{ $role->name }}')">
                                             <div class="flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -126,10 +125,10 @@
                 </table>
             </div>
             <div class="row justify-content-lg-between">
-                <div class="col-lg-6 col-sm-12 text-center">
+                <div class="col-lg-6 col-sm-12 text-start">
                     {{ $roles->links() }}
                 </div>
-                <div class="col-lg-6 col-sm-12 text-right text-mute">
+                <div class="col-lg-6 col-sm-12 text-mute text-end">
                     @lang('Show') {{ $roles->firstItem() }} @lang('to') {{ $roles->lastItem() }}
                     @lang('of')
                     {{ $roles->total() }}

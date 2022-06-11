@@ -13,6 +13,10 @@ return [
      */
     'theme' => 'tailwind',
 
+
+    'role_component' => \Tonystore\LivewirePermission\Http\Livewire\LivewireRole::class,
+    'permission_component' => \Tonystore\LivewirePermission\Http\Livewire\LivewirePermission::class,
+
     /*
     |--------------------------------------------------------------------------
     | Blade Options

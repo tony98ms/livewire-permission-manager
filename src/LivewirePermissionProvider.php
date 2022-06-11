@@ -4,11 +4,9 @@ namespace Tonystore\LivewirePermission;
 
 use Livewire\Livewire;
 use Illuminate\Support\ServiceProvider;
-use Tonystore\LivewirePermission\Http\Livewire\LivewirePermission;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
-use Tonystore\LivewirePermission\Http\Livewire\LivewireRole;
 
 class LivewirePermissionProvider extends ServiceProvider
 {
@@ -28,8 +26,8 @@ class LivewirePermissionProvider extends ServiceProvider
      */
     public function boot()
     {
-        Livewire::component('permission', LivewirePermission::class);
-        Livewire::component('role', LivewireRole::class);
+        Livewire::component('permission', config('livewire-permission.permission_component'));
+        Livewire::component('role', config('livewire-permission.role_component'));
         Blade::component('permissions::components.includes.scripts', 'permissions::scripts');
         Blade::component('permissions::components.includes.styles', 'permissions::styles');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'permissions');

@@ -41,6 +41,7 @@ class LivewireRole extends Component
     {
         $this->resetValidation();
         $this->reset(['roleName', 'roleDescription', 'editMode', 'role_id', 'isOpen']);
+        $this->emit('hideModal');
     }
 
     public function createRole()
@@ -69,17 +70,18 @@ class LivewireRole extends Component
         $this->role_id = $role->id;
         $this->editMode = true;
         $this->isOpen = true;
+        $this->emit('showBootstrapModal');
     }
     public function updateRole()
     {
         $this->validate();
         $role = Role::where('id', $this->role_id)->update($this->getAttributes());
         $this->resetModal();
-        $this->emit('roleUpdated');
+        $this->emit('hideModal');
     }
     public function deleteRole(Role $role)
     {
         $role->delete();
-        $this->emit('roleDeleted');
+        $this->emit('hideModal');
     }
 }
