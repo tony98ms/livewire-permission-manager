@@ -2,6 +2,10 @@
 
 _All notable changes to livewire-permission will be documented in this file._
 
+### 0.2.2
+
+- Fixes for bootstrap 5 modals
+
 ### 0.2.1
 
 - Added Bootstrap 5 support.
