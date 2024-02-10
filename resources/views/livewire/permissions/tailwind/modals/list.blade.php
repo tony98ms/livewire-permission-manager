@@ -16,9 +16,9 @@
             <div class="flex flex-row mb-3 sm:mb-3 justify-between w-full px-4 pt-5 pb-2">
                 <div class="flex flex-row mb-1 sm:mb-0">
                     <h2 class="text-sm uppercase px-2 py-2">@lang('Selected
-                        role')</h2>
+                                                                role')</h2>
                     <div class="relative mx-1">
-                        <select wire:model="role" wire:change="getPermissions()"
+                        <select wire:model.live="role" wire:change="getPermissions()"
                             class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-300 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                             @foreach ($allRoles as $singleRole)
                                 <option value="{{ $singleRole->name }}">

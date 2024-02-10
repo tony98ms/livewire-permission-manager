@@ -1,13 +1,13 @@
 <div>
     @if ($isOpen)
-        @include('permissions::livewire.permissions.'.$theme.'.modals.'.$modalDesign)
+        @include('permissions::livewire.permissions.' . $theme . '.modals.' . $modalDesign)
     @endif
     <div class="p-2">
         <div class="flex flex-row mb-3 sm:mb-3 justify-between w-full">
             <div class="flex flex-row mb-1 sm:mb-0">
                 <h2 class="text-sm uppercase px-2 py-2">Por pagina</h2>
                 <div class="relative mx-1">
-                    <select wire:model="perPage"
+                    <select wire:model.live="perPage"
                         class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-300 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                         @foreach ($perPages as $paginate)
                             <option>{{ $paginate }}</option>
@@ -23,7 +23,7 @@
                         </path>
                     </svg>
                 </span>
-                <input placeholder="@lang('Search Role')..." wire:model="search"
+                <input placeholder="@lang('Search Role')..." wire:model.live="search"
                     class="appearance-none rounded border border-gray-200 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
             </div>
         </div>
@@ -61,27 +61,31 @@
                     @if ($roles->isNotEmpty())
                         @foreach ($roles as $role)
                             <tr>
-                                <td width="100" class="bg-gray-100 text-center">{{ $role->id }}</td>
-                                <td class="bg-gray-100">{{ $role->name }}</td>
-                                @if ($this->columnAdd)
-                                    <td class="bg-gray-100">{{ $role->description }}</td>
-                                @endif
-                                <td class="bg-gray-100">
-                                    @foreach ($role->permissions as $singlePermission)
-                                        <span
-                                            class="rounded-full py-1 px-2 bg-purple-500 text-white font-extrabold text-sm">
-                                            @isset($singlePermission[config('livewire-permission.column_name.description')])
-                                                {{ $singlePermission[config('livewire-permission.column_name.description')] }}
-                                            @else
-                                                {{ $singlePermission->name }}
-                                            @endisset
-                                        </span>
-                                    @endforeach
+                                <td width="100" class="bg-gray-100 dark:bg-gray-800 text-center">{{ $role->id }}
                                 </td>
-                                <td class="bg-gray-100 p-1" width="25">
+                                <td class="bg-gray-100 dark:bg-gray-800 dark:text-white">{{ $role->name }}</td>
+                                @if ($this->columnAdd)
+                                    <td class="bg-gray-100 dark:bg-gray-800 dark:text-white">{{ $role->description }}
+                                    </td>
+                                @endif
+                                <td class="bg-gray-100 dark:bg-gray-800">
+                                    <div class="flex flex-wrap justify-start gap-1">
+                                        @foreach ($role->permissions as $singlePermission)
+                                            <span
+                                                class="inline-flex items-center gap-x-0.5 rounded-md bg-blue-50 px-2 mx-1 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                                                @isset($singlePermission[config('livewire-permission.column_name.description')])
+                                                    {{ $singlePermission[config('livewire-permission.column_name.description')] }}
+                                                @else
+                                                    {{ $singlePermission->name }}
+                                                @endisset
+                                            </span>
+                                        @endforeach
+                                    </div>
+                                </td>
+                                <td class="bg-gray-100 dark:bg-gray-800 p-1" width="25">
                                     <button
                                         class="bg-blue-500 hover:bg-blue-700 transition-all p-2 rounded text-sm text-white font-weight"
-                                        wire:click.prevent="$emit('editRole', {{ $role->id }})">
+                                        wire:click.prevent="$dispatch('editRole',{ role: {{ $role->id }}})">
                                         <div class="flex items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="text-sm" width="24"
                                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -97,14 +101,14 @@
                                     </button>
 
                                 </td>
-                                <td class="bg-gray-100 p-1" width="25">
+                                <td class="bg-gray-100 dark:bg-gray-800 p-1" width="25">
                                     <button
                                         class="bg-green-500 hover:bg-green-700 transition-all p-2 rounded text-sm text-white font-weight"
                                         wire:click.prevent="editPermission('{{ $role->name }}')">
                                         <div class="flex items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                 class="feather feather-shield">
                                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                                             </svg>
@@ -114,21 +118,23 @@
                                     </button>
 
                                 </td>
-                                <td class="bg-gray-100 p-1" width="25">
+                                <td class="bg-gray-100 dark:bg-gray-600 p-1" width="25">
                                     <button
                                         class="bg-red-500 hover:bg-red-700 transition-all p-2 rounded text-sm text-white font-weight"
-                                        wire:click.prevent="$emit('confirmDelete', '{{ __('Are you sure you want to delete this role?') }}','deleteRole', {{ $role->id }})">
+                                        wire:click.prevent="$dispatch('confirmDelete', {title:'{{ __('Are you sure you want to delete this role?') }}',metodo:'deleteRole', id:{role:{{ $role->id }}}})">
                                         <div class="flex items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                                 class="feather feather-trash-2">
                                                 <polyline points="3 6 5 6 21 6"></polyline>
                                                 <path
                                                     d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
                                                 </path>
-                                                <line x1="10" y1="11" x2="10" y2="17"></line>
-                                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                <line x1="10" y1="11" x2="10" y2="17">
+                                                </line>
+                                                <line x1="14" y1="11" x2="14" y2="17">
+                                                </line>
                                             </svg>
                                             @lang('Remove')
                                         </div>

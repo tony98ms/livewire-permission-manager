@@ -10,8 +10,7 @@
                         @lang('Create Role')
                     @endif
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                    wire:click="resetModal">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click="resetModal">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -19,7 +18,7 @@
                 <div class="form-row">
                     <div class="form-group col">
                         <label for="">@lang('Role name')</label>
-                        <input type="text" class="form-control" wire:model.refer="roleName"
+                        <input type="text" class="form-control" wire:model.live.refer="roleName"
                             placeholder="@lang('Role name')">
                         @error('roleName')
                             <p class="error-message text-danger font-weight-bold">@lang($message)</p>
@@ -28,7 +27,7 @@
                     @if ($columnAdd)
                         <div class="form-group col-12">
                             <label for="">@lang('Description name')</label>
-                            <input type="text" class="form-control" wire:model.refer="roleDescription"
+                            <input type="text" class="form-control" wire:model.live.refer="roleDescription"
                                 placeholder="@lang('Description name')">
                             @error('roleDescription')
                                 <p class="error-message text-danger font-weight-bold">@lang($message)</p>

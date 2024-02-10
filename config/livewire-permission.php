@@ -29,7 +29,7 @@ return [
     'blade-template' => [
         'type' => 'components', //Supported Type: components, directives
 
-        'component' => 'AppLayout', //type: components
+        'component' => 'layout', //type: components
 
         'directives' => [  //type: directives
             'extends' => 'layouts.app',
