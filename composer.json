@@ -12,7 +12,7 @@
         "roles"
     ],
     "require": {
-        "livewire/livewire": "^2.0|^3.0@beta|^3.0",
+        "livewire/livewire": "^2.6",
         "spatie/laravel-permission": "^3.0 || ^4.0 || ^5.1",
         "php": "^7.0|^8.0"
     },
