@@ -5,14 +5,14 @@
             <div class="row mb-4 justify-content-between">
                 <div class="col-lg-4 form-inline col-sm-12 mb-lg-0 mb-1">
                     @lang('Per Page'): &nbsp;
-                    <select wire:model="perPage" class="form-control form-control-sm">
+                    <select wire:model.live="perPage" class="form-control form-control-sm">
                         @foreach ($perPages as $paginate)
                             <option>{{ $paginate }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col-lg-3 col-sm-12 mb-lg-0 mb-1">
-                    <input wire:model="search" class="form-control" type="text" placeholder="@lang('Search Role')...">
+                    <input wire:model.live="search" class="form-control" type="text" placeholder="@lang('Search Role')...">
                 </div>
             </div>
             <div class="row table-responsive">
@@ -62,7 +62,7 @@
                                     </td>
                                     <td class="p-1 text-center" width="25">
                                         <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modelRole"
-                                            wire:click.prevent="$emit('editRole', {{ $role->id }})">
+                                            wire:click.prevent="$dispatch('editRole', {postId: 1})">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="text-sm" width="24"
                                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -91,7 +91,7 @@
                                     </td>
                                     <td class="p-1 text-center" width="25">
                                         <a class="btn btn-sm btn-danger"
-                                            wire:click.prevent="$emit('confirmDelete', '{{ __('Are you sure you want to delete this role?') }}','deleteRole', {{ $role->id }})">
+                                            wire:click.prevent="$dispatch('confirmDelete', '{{ __('Are you sure you want to delete this role?') }}','deleteRole', {{ $role->id }})">
                                             <div class="flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -101,8 +101,10 @@
                                                     <path
                                                         d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
                                                     </path>
-                                                    <line x1="10" y1="11" x2="10" y2="17"></line>
-                                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                    <line x1="10" y1="11" x2="10" y2="17">
+                                                    </line>
+                                                    <line x1="14" y1="11" x2="14" y2="17">
+                                                    </line>
                                                 </svg>
                                                 @lang('Remove')
                                             </div>

@@ -5,3 +5,5 @@ vendor
 coverage
 .idea
 /.phpunit.result.cache
+/.phpunit.cache
+node_modules

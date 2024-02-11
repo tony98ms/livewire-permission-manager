@@ -10,12 +10,14 @@
 @endsection
 @section('js')
     <script>
-        Livewire.on('roleAdd', function() {
-            $('#modelRole').modal('hide');
-            $('#modalPermission').modal('show');
-        });
-        Livewire.on('roleUpdated', function() {
-            $('#modelRole').modal('hide');
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('roleAdd', function() {
+                $('#modelRole').modal('hide');
+                $('#modalPermission').modal('show');
+            });
+            Livewire.on('roleUpdated', function() {
+                $('#modelRole').modal('hide');
+            });
         });
     </script>
 @endsection

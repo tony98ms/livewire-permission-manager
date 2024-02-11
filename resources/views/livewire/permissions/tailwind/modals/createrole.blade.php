@@ -20,12 +20,14 @@
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="">
                         <div class="mb-4">
-                            <label for="inputName" class="block text-gray-700 text-sm font-bold mb-2">@lang('Role
-                                name')</label>
+                            <label for="inputName"
+                                class="block text-gray-700 text-sm font-bold mb-2">@lang('Role name')</label>
                             <input type="text"
                                 class="appearance-none rounded border border-gray-200 border-b block w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
-                                id="inputName" placeholder="@lang('Role name')" wire:model.refer="roleName">
-                            @error('roleName') <span class="text-red-500">@lang($message)</span>@enderror
+                                id="inputName" placeholder="@lang('Role name')" wire:model.live.refer="roleName">
+                            @error('roleName')
+                                <span class="text-red-500">@lang($message)</span>
+                            @enderror
                         </div>
                         @if ($columnAdd)
                             <div class="mb-4">
@@ -34,8 +36,10 @@
                                 <input type="text"
                                     class="appearance-none rounded border border-gray-200 border-b block w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                                     id="inputDescription" placeholder="@lang('Description name')"
-                                    wire:model.refer="roleDescription">
-                                @error('roleDescription') <span class="text-red-500">@lang($message)</span>@enderror
+                                    wire:model.live.refer="roleDescription">
+                                @error('roleDescription')
+                                    <span class="text-red-500">@lang($message)</span>
+                                @enderror
                             </div>
                         @endif
                     </div>
@@ -52,12 +56,11 @@
                             <button
                                 class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                 wire:target="editRole,updateRole" wire:loading.attr="disabled"
-                                wire:click.prevent="createRole()">@lang('Create
-                                Role')</button>
+                                wire:click.prevent="createRole()">@lang('Create Role')</button>
                         @endif
                     </span>
+                </div>
             </form>
         </div>
     </div>
-</div>
 </div>

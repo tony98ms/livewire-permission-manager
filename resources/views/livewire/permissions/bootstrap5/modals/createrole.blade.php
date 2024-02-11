@@ -1,6 +1,6 @@
 <!-- Modal -->
-<div wire:ignore.self class="modal fade" id="modelRole" data-bs-backdrop="static" data-bs-keyboard="false"
-    tabindex="-1" aria-labelledby="modelRoleLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="modelRole" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modelRoleLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="form-group col">
                         <label for="">@lang('Role name')</label>
-                        <input type="text" class="form-control" wire:model.refer="roleName"
+                        <input type="text" class="form-control" wire:model.live.refer="roleName"
                             placeholder="@lang('Role name')">
                         @error('roleName')
                             <p class="error-message text-danger font-weight-bold">@lang($message)</p>
@@ -26,7 +26,7 @@
                     @if ($columnAdd)
                         <div class="form-group col-12">
                             <label for="">@lang('Description name')</label>
-                            <input type="text" class="form-control" wire:model.refer="roleDescription"
+                            <input type="text" class="form-control" wire:model.live.refer="roleDescription"
                                 placeholder="@lang('Description name')">
                             @error('roleDescription')
                                 <p class="error-message text-danger font-weight-bold">@lang($message)</p>
@@ -37,8 +37,7 @@
                 <div class="row justify-content-center mt-1">
                     <div class="col-lg-12">
                         @if ($editMode)
-                            <button class="btn btn-info" wire:target="editRole,updateRole"
-                                wire:loading.attr="disabled"
+                            <button class="btn btn-info" wire:target="editRole,updateRole" wire:loading.attr="disabled"
                                 wire:click.prevent="updateRole()">@lang('Update Role')</button>
                         @else
                             <button class="btn btn-warning" wire:target="editRole,updateRole"

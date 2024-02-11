@@ -35,6 +35,7 @@ class LivewirePermission extends Component
     public    $modalDesign;
     public    $isOpen            = false;
     public    $roleName          = '';
+    public    $paginationTheme          = '';
     public function __construct()
     {
         $this->theme = config('livewire-permission.theme', 'bootstrap');
@@ -70,7 +71,7 @@ class LivewirePermission extends Component
         $this->role = $name;
         $this->getPermissions();
         $this->isOpen = true;
-        $this->emit('showPermissionModal');
+        $this->dispatch('showPermissionModal');
     }
     public function getSelectByPermission()
     {
@@ -90,7 +91,7 @@ class LivewirePermission extends Component
     public function resetModal()
     {
         $this->reset(['role', 'permissionsByRole', 'isOpen']);
-        $this->emit('hideModal');
+        $this->dispatch('hideModal');
     }
     public function roleAdd($role)
     {

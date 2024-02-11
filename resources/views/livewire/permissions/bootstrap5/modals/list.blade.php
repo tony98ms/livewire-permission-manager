@@ -1,11 +1,10 @@
-<div wire:ignore.self class="modal fade" id="modalPermission" data-backdrop="static" data-keyboard="false"
-    tabindex="-1" aria-labelledby="modalPermissionLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="modalPermission" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="modalPermissionLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-dark" id="modalPermissionTitle">@lang('Permission Management')</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                    wire:click="resetModal">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click="resetModal">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -14,9 +13,9 @@
                 </h1>
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label text-lg-right">@lang('Selected
-                        role')</label>
+                                            role')</label>
                     <div class="col-sm-3">
-                        <select class="custom-select btn-block" wire:model="role" wire:change="getPermissions()">
+                        <select class="custom-select btn-block" wire:model.live="role" wire:change="getPermissions()">
                             @foreach ($allRoles as $singleRole)
                                 <option value="{{ $singleRole->name }}">
                                     @isset($singleRole[config('livewire-permission.column_name.description')])

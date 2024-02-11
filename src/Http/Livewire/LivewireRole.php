@@ -3,6 +3,7 @@
 namespace Tonystore\LivewirePermission\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Spatie\Permission\Models\Role;
 
 class LivewireRole extends Component
@@ -16,6 +17,7 @@ class LivewireRole extends Component
     public    $editMode        = false;
     public    $isOpen          = false;
     public    $columnAdd;
+    public    $paginationTheme = '';
 
     protected $rules = [
         'roleName' => 'required'
@@ -23,7 +25,6 @@ class LivewireRole extends Component
     protected $messages = [
         'roleName.required' => 'The role name is required'
     ];
-    protected $listeners = ['editRole', 'deleteRole'];
 
     public function __construct()
     {
@@ -41,18 +42,18 @@ class LivewireRole extends Component
     {
         $this->resetValidation();
         $this->reset(['roleName', 'roleDescription', 'editMode', 'role_id', 'isOpen']);
-        $this->emit('hideModal');
+        $this->dispatch('hideModal');
     }
 
     public function createRole()
     {
         $this->validate();
-        $role = Role::create($this->getAttributes());
+        $role = Role::create($this->getAttributesRole());
         $this->resetModal();
-        $this->emit('roleAdd', [$role->name]);
+        $this->dispatch('roleAdd', [$role->name]);
     }
 
-    public function getAttributes()
+    public function getAttributesRole()
     {
         if (isset($this->columnName))
             return [
@@ -63,25 +64,27 @@ class LivewireRole extends Component
             'name' => $this->roleName
         ];
     }
-    public function editRole(Role $role)
+    #[On('editRole')]
+    public function roleEdit(Role $role)
     {
         $this->roleName = $role->name;
         $this->roleDescription = isset($this->columnName) ? $role[$this->columnName] : '';
         $this->role_id = $role->id;
         $this->editMode = true;
         $this->isOpen = true;
-        $this->emit('showBootstrapModal');
+        $this->dispatch('showBootstrapModal');
     }
-    public function updateRole()
+    public function roleUpdate()
     {
         $this->validate();
-        $role = Role::where('id', $this->role_id)->update($this->getAttributes());
+        $role = Role::where('id', $this->role_id)->update($this->getAttributesRole());
         $this->resetModal();
-        $this->emit('hideModal');
+        $this->dispatch('hideModal');
     }
-    public function deleteRole(Role $role)
+    #[On('deleteRole')]
+    public function roleDelete(Role $role)
     {
         $role->delete();
-        $this->emit('hideModal');
+        $this->dispatch('hideModal');
     }
 }
