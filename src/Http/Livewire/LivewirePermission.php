@@ -3,24 +3,23 @@
 namespace Tonystore\LivewirePermission\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
+use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Tonystore\LivewirePermission\Traits\ListModelTrait;
 use Tonystore\LivewirePermission\Traits\SortByTrait;
+use Tonystore\LivewirePermission\Traits\ListModelTrait;
 
 class LivewirePermission extends Component
 {
     use WithPagination, SortByTrait, ListModelTrait;
-    protected $queryString     = [
-        'search' => ['except' => ''],
-        'page',
-    ];
-    protected $listeners = ['roleAdd', 'roleUpdated' => 'render', 'roleDeleted' => 'render'];
+    #[Url]
+    public string $search = '';
+    protected $listeners = ['roleUpdated' => 'render', 'roleDeleted' => 'render'];
     protected $excludeRoles;
     public    $perPage;
     public    $perPages;
-    public    $search            = '';
     public    $orderBy           = 'id';
     public    $orderAsc          = true;
     public    $role              = '';
@@ -47,6 +46,7 @@ class LivewirePermission extends Component
         $this->perPages =  config('livewire-permission.paginate.perPages');
         $this->perPage =  $this->perPages[0];
     }
+    #[On('role-deleted')]
     public function render()
     {
         $this->freePermissions = Permission::where(function ($query) {
@@ -93,6 +93,7 @@ class LivewirePermission extends Component
         $this->reset(['role', 'permissionsByRole', 'isOpen']);
         $this->dispatch('hideModal');
     }
+    #[On('roleAdd')]
     public function roleAdd($role)
     {
         $this->role = $role;

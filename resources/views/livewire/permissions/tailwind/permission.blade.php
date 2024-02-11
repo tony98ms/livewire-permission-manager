@@ -4,11 +4,11 @@
     @endif
     <div class="p-2">
         <div class="flex flex-row mb-3 sm:mb-3 justify-between w-full">
-            <div class="flex flex-row mb-1 sm:mb-0">
-                <h2 class="text-sm uppercase px-2 py-2">Por pagina</h2>
+            <div class="flex flex-row items-center mb-1 sm:mb-0">
+                <h2 class="text-sm uppercase px-2 py-2"> @lang('per page')</h2>
                 <div class="relative mx-1">
                     <select wire:model.live="perPage"
-                        class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-300 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         @foreach ($perPages as $paginate)
                             <option>{{ $paginate }}</option>
                         @endforeach
@@ -28,32 +28,38 @@
             </div>
         </div>
         <div class="overflow-x-auto w-full">
-            <table
-                class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+            <table class='mx-auto w-full whitespace-nowrap rounded-lg divide-y divide-gray-300 overflow-hidden'>
                 <thead class="bg-gray-900">
                     <tr class="text-white text-left">
-                        <th width="100" class="px-4 py-2 text-center ">
-                            <a class="text-primary" wire:click.prevent="sortBy('id')" role="button" href="#">
-                                @lang('ID')
+                        <th width="100" class="px-4 py-2 text-center" wire:click.prevent="sortBy('id')"
+                            role="button">
+                            <div class="flex justify-between">
+                                <a class="dark:text-white" href="#">
+                                    @lang('ID')
+                                </a>
                                 @include('permissions::includes._sort-icon', ['field' => 'id'])
-                            </a>
+                            </div>
                         </th>
                         <th width="150" class="px-4 py-2 text-center ">
-                            <a class="text-primary" wire:click.prevent="sortBy('name')" role="button" href="#">
-                                @lang('Role')
+                            <div class="flex justify-between" wire:click.prevent="sortBy('name')" role="button">
+                                <a class="dark:text-white" href="#">
+                                    @lang('Role')
+                                </a>
                                 @include('permissions::includes._sort-icon', ['field' => 'name'])
-                            </a>
+                            </div>
                         </th>
                         @if ($columnAdd)
                             <th width="250" class="px-4 py-2 text-center ">
-                                <a class="text-primary" wire:click.prevent="sortBy('{{ $columnName }}')"
-                                    role="button" href="#">
-                                    @lang('Description')
+                                <div class="flex justify-between" wire:click.prevent="sortBy('{{ $columnName }}')"
+                                    role="button">
+                                    <a class="dark:text-white" href="#">
+                                        @lang('Description')
+                                    </a>
                                     @include('permissions::includes._sort-icon', ['field' => $columnName])
-                                </a>
+                                </div>
                             </th>
                         @endif
-                        <th class="px-4 py-2 text-center "> @lang('Permissions')</th>
+                        <th class="px-4 py-2 text-center"> @lang('Permissions')</th>
                         <th class="px-4 py-2 text-center" colspan="3"></th>
                     </tr>
                 </thead>
@@ -118,7 +124,7 @@
                                     </button>
 
                                 </td>
-                                <td class="bg-gray-100 dark:bg-gray-600 p-1" width="25">
+                                <td class="bg-gray-100 dark:bg-gray-800 p-1" width="25">
                                     <button
                                         class="bg-red-500 hover:bg-red-700 transition-all p-2 rounded text-sm text-white font-weight"
                                         wire:click.prevent="$dispatch('confirmDelete', {title:'{{ __('Are you sure you want to delete this role?') }}',metodo:'deleteRole', id:{role:{{ $role->id }}}})">
@@ -149,7 +155,7 @@
                             <td colspan="10">
                                 <p class="text-center">@lang('No result for your search')
                                     <strong>{{ $search }}</strong> @lang('on page')
-                                    <strong>{{ $page }}</strong> @lang('displaying')
+                                    <strong>{{ $page ?? 0 }}</strong> @lang('displaying')
                                     <strong>{{ $perPage }}
                                     </strong> @lang('per page')
                                 </p>

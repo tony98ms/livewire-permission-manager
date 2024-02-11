@@ -34,10 +34,14 @@ class LivewirePermissionManagerTest extends TestCase
     public function test_create_role(): void
     {
         $this->assertEquals(0, Role::count());
+        $permission = Livewire::test(LivewirePermission::class)
+            ->assertSee(0);
         Livewire::test(LivewireRole::class)
             ->set('roleName', 'admin')
-            ->call('createRole');
+            ->call('createRole')
+            ->assertDispatched('roleAdd');
         $this->assertEquals(1, Role::count());
+        $permission->assertSee(1);
     }
     public function test_edit_role_role(): void
     {
@@ -52,5 +56,22 @@ class LivewirePermissionManagerTest extends TestCase
         Livewire::test(LivewireRole::class)
             ->dispatch('editRole', $role)
             ->assertSet('roleName', $role->name);
+    }
+    public function test_update_role_with_dispatch(): void
+    {
+        $role = Role::create(['name' => 'admin']);
+        Livewire::test(LivewireRole::class)
+            ->dispatch('editRole', $role)
+            ->set('roleName', 'user')
+            ->call('roleUpdate')
+            ->assertDispatched('hideModal');
+        $this->assertEquals('user', $role->fresh()->name);
+    }
+    public function test_delete_role(): void
+    {
+        $role = Role::create(['name' => 'admin']);
+        Livewire::test(LivewireRole::class)
+            ->call('roleDelete', $role);
+        $this->assertEquals(0, Role::count());
     }
 }

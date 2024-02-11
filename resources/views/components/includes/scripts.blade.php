@@ -61,5 +61,11 @@
                 });
             });
         });
+        Livewire.on('role-deleted', function() {
+            Swal.fire("{{ __('Rol deleted success!') }}");
+        });
+        Livewire.on('role-updated', function() {
+            Swal.fire("{{ __('Rol updated success!') }}");
+        });
     </script>
 </div>

@@ -6,8 +6,8 @@
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
         <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
             role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-            <div class="border-b px-4 py-2 flex justify-between items-center bg-red-100">
-                <h3 class="font-semibold text-lg">
+            <div class="border-b px-4 py-2 flex justify-between items-center bg-blue-600 dark:bg-gray-800">
+                <h3 class="font-semibold text-lg text-white">
                     @if ($editMode)
                         @lang('Update Role')
                     @else
@@ -17,13 +17,13 @@
                 <button class="text-black close-modal" wire:click="resetModal">&cross;</button>
             </div>
             <form>
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="">
                         <div class="mb-4">
                             <label for="inputName"
-                                class="block text-gray-700 text-sm font-bold mb-2">@lang('Role name')</label>
+                                class="block text-gray-700 dark:text-white text-sm font-bold mb-2">@lang('Role name')</label>
                             <input type="text"
-                                class="appearance-none rounded border border-gray-200 border-b block w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+                                class="appearance-none rounded border border-gray-200 dark:bg-gray-900 dark:text-white border-b block w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                                 id="inputName" placeholder="@lang('Role name')" wire:model.live.refer="roleName">
                             @error('roleName')
                                 <span class="text-red-500">@lang($message)</span>
@@ -44,18 +44,18 @@
                         @endif
                     </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <div class="bg-gray-50 dark:bg-gray-800 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                     <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
                         @if ($editMode)
-                            <button wire:target="editRole,updateRole" wire:loading.attr="disabled"
-                                wire:click.prevent="updateRole()" type="button"
+                            <button wire:target="editRole,roleUpdate" wire:loading.attr="disabled"
+                                wire:click.prevent="roleUpdate()" type="button"
                                 class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                                 @lang('Update Role')
                             </button>
                         @else
                             <button
                                 class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5"
-                                wire:target="editRole,updateRole" wire:loading.attr="disabled"
+                                wire:target="editRole,roleUpdate" wire:loading.attr="disabled"
                                 wire:click.prevent="createRole()">@lang('Create Role')</button>
                         @endif
                     </span>
