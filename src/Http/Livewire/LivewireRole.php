@@ -77,14 +77,15 @@ class LivewireRole extends Component
     public function roleUpdate()
     {
         $this->validate();
-        $role = Role::where('id', $this->role_id)->update($this->getAttributesRole());
+        Role::where('id', $this->role_id)->update($this->getAttributesRole());
         $this->resetModal();
         $this->dispatch('hideModal');
+        $this->dispatch('role-updated');
     }
     #[On('deleteRole')]
     public function roleDelete(Role $role)
     {
         $role->delete();
-        $this->dispatch('hideModal');
+        $this->dispatch('role-deleted');
     }
 }

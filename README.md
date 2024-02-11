@@ -7,11 +7,18 @@
 Package that provides a graphical interface to manage roles and permissions.
 ## REQUIREMENTS
 
--   [PHP >= 7.2](http://php.net)
--   [Laravel 7|8](https://laravel.com)
--   [Livewire](https://laravel-livewire.com)
+-   [PHP >= ^8.0](http://php.net)
+-   [Laravel 7|8|9|10](https://laravel.com)
+-   [Livewire 2|3](https://livewire.laravel.com/)
 -   [Laravel  Permission](https://github.com/spatie/laravel-permission)
-- [Bootstrap 4.5 | 4.6](https://getbootstrap.com) or [Tailwind](https://tailwindcss.com) 
+- [Bootstrap 4.5 | 4.6 | ^5.0](https://getbootstrap.com) or [Tailwind](https://tailwindcss.com) 
+
+## Version Compatibility Livewire
+
+ Livewire  | Livewire Permission Manager
+:---------|:----------
+ 2.x      | 0.2.x
+ 3.x      | 0.3.x
 
 ## INSTALLATION VIA COMPOSER
 
@@ -113,7 +120,6 @@ Here you define the array of numbers for the paging options.
         'perPages' => [
             10, 25, 50, 100, 200
         ]
-
     ]
 ```
 
