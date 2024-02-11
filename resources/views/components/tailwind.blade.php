@@ -9,7 +9,7 @@
     </x-slot>
     <div>
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-900 overflow-hidden shadow-xl rounded-lg px-4 py-4 my-2">
                     <div>
                         @livewire('role')

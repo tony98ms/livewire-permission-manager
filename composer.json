@@ -12,18 +12,23 @@
         "roles"
     ],
     "require": {
+        "php": "^8.0",
         "livewire/livewire": "^3.0",
-        "spatie/laravel-permission": "^5.1|^6.1",
-        "php": "^8.0"
+        "spatie/laravel-permission": "^5.1|^6.1"
     },
     "require-dev": {
-        "laravel/laravel": "^10.0",
-        "phpunit/phpunit": "^10.5"
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^10.0"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
             "Tonystore\\LivewirePermission\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tonystore\\LivewirePermission\\Tests\\": "tests"
         }
     },
     "authors": [

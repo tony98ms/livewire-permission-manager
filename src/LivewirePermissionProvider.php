@@ -4,6 +4,7 @@ namespace Tonystore\LivewirePermission;
 
 use Livewire\Livewire;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\View;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -42,7 +43,9 @@ class LivewirePermissionProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'permissions');
         $this->loadJsonTranslationsFrom(__DIR__ . '/../resources/lang');
         $this->loadJsonTranslationsFrom(resource_path('lang/vendor/permissions'));
-
+        View::composer('permissions::components.includes.styles', function ($view) {
+            $view->cssPath = __DIR__ . '/../dist/tailwind.css';
+        });
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../resources/views' => resource_path('views/vendor/permissions')
