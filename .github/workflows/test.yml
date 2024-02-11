@@ -29,7 +29,6 @@ jobs:
       - name: Create Database
         run: |
           yes | touch database/database.sqlite
-          php artisan migrate --force
 
       - name: Run Test Suite
         run: vendor/bin/phpunit
