@@ -1,7 +1,9 @@
 # livewire-permission-manager
 
-[![Latest Stable Version](http://poser.pugx.org/tonystore/livewire-permission-manager/v)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![Total Downloads](http://poser.pugx.org/tonystore/livewire-permission-manager/downloads)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![License](http://poser.pugx.org/tonystore/livewire-permission-manager/license)](https://packagist.org/packages/tonystore/livewire-permission-manager)  [![PHP Version Require](http://poser.pugx.org/tonystore/livewire-permission-manager/require/php)](https://packagist.org/packages/tonystore/livewire-permission)
-
+[![Latest Stable Version](https://img.shields.io/packagist/v/tonystore/livewire-permission-manager)](https://packagist.org/packages/tonystore/livewire-permission-manager) 
+[![Packagist Downloads](https://img.shields.io/packagist/dt/tonystore/livewire-permission-manager)](https://packagist.org/packages/tonystore/livewire-permission-manager)
+[![License](https://img.shields.io/packagist/l/tonystore/livewire-permission-manager)](https://packagist.org/packages/tonystore/livewire-permission-manager) 
+[![PHP Version Require](https://img.shields.io/packagist/dependency-v/tonystore/livewire-permission-manager/php)](https://packagist.org/packages/tonystore/livewire-permission)
   
 
 Package that provides a graphical interface to manage roles and permissions.
