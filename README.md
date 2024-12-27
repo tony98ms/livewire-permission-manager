@@ -1,9 +1,9 @@
 # livewire-permission-manager
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/tonystore/livewire-permission-manager)](https://packagist.org/packages/tonystore/livewire-permission-manager) 
+[![Latest Stable Version](https://img.shields.io/packagist/v/tonystore/livewire-permission-manager?label=version)](https://packagist.org/packages/tonystore/livewire-permission-manager) 
 [![Packagist Downloads](https://img.shields.io/packagist/dt/tonystore/livewire-permission-manager)](https://packagist.org/packages/tonystore/livewire-permission-manager)
 [![License](https://img.shields.io/packagist/l/tonystore/livewire-permission-manager)](https://packagist.org/packages/tonystore/livewire-permission-manager) 
-[![PHP Version Require](https://img.shields.io/packagist/dependency-v/tonystore/livewire-permission-manager/php)](https://packagist.org/packages/tonystore/livewire-permission)
+[![PHP Version Require](https://img.shields.io/packagist/dependency-v/tonystore/livewire-permission-manager/php)](https://packagist.org/packages/tonystore/livewire-permission-manager)
   
 
 Package that provides a graphical interface to manage roles and permissions.
